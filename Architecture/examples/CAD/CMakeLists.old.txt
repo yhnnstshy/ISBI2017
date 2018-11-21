@@ -1,0 +1,45 @@
+cmake_minimum_required(VERSION 2.8)
+
+PROJECT(RunHED C CXX)
+
+include(ExternalProject)
+
+SET(CMAKE_CXX_FLAGS "-std=c++11")
+#SET(CMAKE_PREFIX_PATH "/home/tsehayyk/Work/ProstateCAD/Source/Dependencies/Linux_GCC4.9/Release/InsightToolkit-4.7.1/lib/cmake/ITK-4.7a" "/home/tsehayyk/Work/ProstateCAD/Source/HED/hed/" "/usr/local/cuda-7.0" "/home/tsehayyk/Work/ProstateCAD/Source/HED/hed/build")
+
+FIND_PACKAGE(ITK REQUIRED ITKCommon ITKIOImageBase ITKGDCM ITKIOGDCM ITKIOMeta ITKIONIFTI ITKIONRRD ITKIOJPEG ITKIOPNG ITKMesh ITKQuadEdgeMesh)
+
+IF (NOT ITK_FOUND)
+  MESSAGE(FATAL "ITK is required.")
+ENDIF()
+
+INCLUDE(${ITK_USE_FILE})
+
+FIND_PATH (CAFFE_INCLUDE_DIR NAMES caffe/caffe.hpp)
+INCLUDE_DIRECTORIES(${CAFFE_INCLUDE_DIR})
+
+FIND_PATH (CAFFE_INCLUDE_DIR2 NAMES caffe/proto/caffe.pb.h)
+INCLUDE_DIRECTORIES(${CAFFE_INCLUDE_DIR2})
+
+FIND_PATH (CUDA_INCLUDE_DIR NAMES cublas_v2.h)
+INCLUDE_DIRECTORIES(${CUDA_INCLUDE_DIR})
+
+MESSAGE(STATUS "CAFFE_INCLUDE_PATH=${CAFFE_INCLUDE_DIR}\n" 
+               "CUDA_INCLUDE_PATH=${CUDA_INCLUDE_DIR}\n"
+               "CAFFE_INCLUDE_PATH2=${CAFFE_INCLUDE_DIR2}")
+
+ADD_DEFINITIONS(-D_USE_MATH_DEFINES=1)
+
+INCLUDE(cmake/Dependencies.cmake)
+
+
+ADD_LIBRARY(HEDLib
+  Common.h Common.cpp
+  CodeBookTree.h CodeBookTree.hpp
+  VoiFileIO.h VoiFileIO.cpp
+  VoiToMask.h VoiToMask.hpp
+  MedicalImages2HED.h MedicalImages2HED.cpp
+)
+
+ADD_EXECUTABLE(runhed RunHED.cpp bsdgetopt.h bsdgetopt.c)
+TARGET_LINK_LIBRARIES(runhed HEDLib ${ITK_LIBRARIES})

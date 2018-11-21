@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -std=c++11  -Wno-array-bounds -msse2 -O3 -DNDEBUG    -shared -Wl,-soname,libCADLib.so -o libCADLib.so CMakeFiles/CADLib.dir/Common.cpp.o CMakeFiles/CADLib.dir/ProstateCAD.cpp.o CMakeFiles/CADLib.dir/ROCCurve.cpp.o CMakeFiles/CADLib.dir/VoiFileIO.cpp.o CMakeFiles/CADLib.dir/MedicalImages2HED.cpp.o 

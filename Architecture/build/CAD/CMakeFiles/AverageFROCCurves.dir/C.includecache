@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tsehayyk/Work/ProstateCAD/ISBI2017/Architecture/CAD/bsdgetopt.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+Windows.h
+-
+bsdgetopt.h
+/home/tsehayyk/Work/ProstateCAD/ISBI2017/Architecture/CAD/bsdgetopt.h
+
+/home/tsehayyk/Work/ProstateCAD/ISBI2017/Architecture/CAD/bsdgetopt.h
+unistd.h
+-
+

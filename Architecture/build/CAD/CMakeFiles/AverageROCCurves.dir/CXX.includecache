@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tsehayyk/Work/ProstateCAD/ISBI2017/Architecture/CAD/AverageROCCurves.cpp
+cstdlib
+-
+cstring
+-
+algorithm
+-
+iostream
+-
+fstream
+-
+vector
+-
+set
+-
+limits
+-
+string
+-
+sstream
+-
+PiecewiseLinearInterpolation.h
+/home/tsehayyk/Work/ProstateCAD/ISBI2017/Architecture/CAD/PiecewiseLinearInterpolation.h
+bsdgetopt.h
+/home/tsehayyk/Work/ProstateCAD/ISBI2017/Architecture/CAD/bsdgetopt.h
+
+/home/tsehayyk/Work/ProstateCAD/ISBI2017/Architecture/CAD/PiecewiseLinearInterpolation.h
+algorithm
+-
+utility
+-
+set
+-
+
+/home/tsehayyk/Work/ProstateCAD/ISBI2017/Architecture/CAD/bsdgetopt.h
+unistd.h
+-
+
